@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +22,17 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Glassmorphism Classes */
@@ -55,23 +64,25 @@
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-        
+
         .tab-btn.active {
             background: rgba(255, 255, 255, 0.25);
             border-color: rgba(255, 255, 255, 0.5);
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .tip-box {
             background: rgba(0, 0, 0, 0.25);
-            border-left: 4px solid #facc15; /* Tailwind yellow-400 */
+            border-left: 4px solid #facc15;
+            /* Tailwind yellow-400 */
         }
 
         /* Hide scrollbar for tabs */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .no-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -89,23 +100,31 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body class="flex flex-col items-center py-8 px-4 md:px-8">
 
     <!-- Header Section -->
     <header class="text-center mb-8 w-full max-w-7xl">
-        <h1 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">
+        <h1
+            class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">
             Tour Guide Weather Dashboard
         </h1>
         <p class="text-base md:text-lg text-blue-200 opacity-90 font-light mb-4">
             Cập nhật thời tiết & Lưu ý tại các điểm du lịch
         </p>
-        
-        <div class="inline-flex items-center justify-center bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 shadow-lg">
+
+        <div
+            class="inline-flex items-center justify-center bg-black/40 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 shadow-lg">
             <span id="update-status" class="text-sm md:text-base font-medium flex items-center gap-2">
                 <span class="spinner" id="loading-spinner"></span>
                 <span id="last-updated-text">Đang tải dữ liệu...</span>
@@ -116,17 +135,21 @@
     <!-- Region Tabs -->
     <div class="w-full max-w-7xl mb-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div id="tabs-container" class="flex overflow-x-auto no-scrollbar gap-2 pb-2 glass-panel p-2 rounded-2xl w-full md:w-auto">
+            <div id="tabs-container"
+                class="flex overflow-x-auto no-scrollbar gap-2 pb-2 glass-panel p-2 rounded-2xl w-full md:w-auto">
                 <!-- Tabs injected by JS -->
             </div>
-            
+
             <!-- Toolbar: Search & Refresh -->
             <div class="flex gap-3 w-full md:w-auto">
-                <input type="text" id="search-input" placeholder="🔍 Tìm địa điểm..." 
-                       class="glass-panel text-white placeholder-white/70 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-64 transition-all">
-                <button onclick="fetchDataForCurrentRegion()" class="bg-blue-600/80 hover:bg-blue-500 text-white px-4 py-2 rounded-xl transition-colors whitespace-nowrap shadow-lg flex items-center gap-2 border border-blue-400/30">
+                <input type="text" id="search-input" placeholder="🔍 Tìm địa điểm..."
+                    class="glass-panel text-white placeholder-white/70 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 w-full md:w-64 transition-all">
+                <button onclick="fetchDataForCurrentRegion()"
+                    class="bg-blue-600/80 hover:bg-blue-500 text-white px-4 py-2 rounded-xl transition-colors whitespace-nowrap shadow-lg flex items-center gap-2 border border-blue-400/30">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
                     </svg>
                     Làm mới
                 </button>
@@ -135,7 +158,7 @@
     </div>
 
     <!-- Weather Grid Container -->
-    <main id="weather-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full max-w-7xl">
+    <main id="weather-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl items-stretch">
         <!-- Cards injected by JS -->
     </main>
 
@@ -264,12 +287,12 @@
             fetchDataForCurrentRegion();
         });
 
-        // WMO Weather codes mapping
-        function getWeatherDetails(code) {
+        // WMO Weather codes mapping with Day/Night logic
+        function getWeatherDetails(code, isDay = 1) {
             const map = {
-                0: { emoji: '☀️', desc: 'Trời quang đãng', group: 'clear' },
-                1: { emoji: '🌤️', desc: 'Trời chủ yếu nắng', group: 'clear' },
-                2: { emoji: '⛅', desc: 'Có mây rải rác', group: 'cloudy' },
+                0: { emoji: isDay ? '☀️' : '🌙', desc: isDay ? 'Trời quang đãng' : 'Trời trong (Đêm)', group: 'clear' },
+                1: { emoji: isDay ? '🌤️' : '☁️', desc: isDay ? 'Trời chủ yếu nắng' : 'Đêm ít mây', group: 'clear' },
+                2: { emoji: isDay ? '⛅' : '☁️', desc: isDay ? 'Có mây rải rác' : 'Đêm có mây', group: 'cloudy' },
                 3: { emoji: '☁️', desc: 'Trời nhiều mây', group: 'cloudy' },
                 45: { emoji: '🌫️', desc: 'Có sương mù', group: 'fog' },
                 48: { emoji: '🌫️', desc: 'Sương mù lạnh', group: 'fog' },
@@ -299,7 +322,7 @@
                 if (temp >= 32) tip += "Nắng gắt, hãy nhắc khách bôi kem chống nắng, mang theo nón và nước suối. ";
                 if (spotType === 'mountain' || spotType === 'pass') tip += "Tầm nhìn bao quát rất tốt để ngắm cảnh từ trên cao.";
                 if (spotType === 'cave') tip += "Bên trong hang động mát mẻ, lý tưởng để tránh nắng.";
-            } 
+            }
             else if (weatherGroup === 'cloudy') {
                 tip = "Trời râm mát, khá dễ chịu cho các hoạt động ngoài trời. ";
                 if (spotType === 'mountain' || spotType === 'valley') tip += "Tuy nhiên phong cảnh có thể hơi mù, mang nét bồng bềnh đặc trưng.";
@@ -338,7 +361,7 @@
         function renderTabs() {
             const container = document.getElementById('tabs-container');
             container.innerHTML = '';
-            
+
             regionsData.forEach(region => {
                 const btn = document.createElement('button');
                 btn.className = `tab-btn px-4 py-2 md:px-6 md:py-3 rounded-xl border border-transparent text-sm md:text-base ${region.id === currentRegionId ? 'active' : 'text-white/80 hover:bg-white/10'}`;
@@ -376,7 +399,7 @@
         function renderSpots() {
             const grid = document.getElementById('weather-grid');
             grid.innerHTML = '';
-            
+
             const region = regionsData.find(r => r.id === currentRegionId);
             if (!region) return;
 
@@ -390,21 +413,21 @@
 
             filteredSpots.forEach(spot => {
                 const cardHTML = `
-                    <div id="card-${spot.id}" class="glass-card flex flex-col relative overflow-hidden h-full">
-                        <div class="absolute inset-0 bg-white/5 animate-pulse z-0" id="skeleton-${spot.id}"></div>
+                    <div id="card-${spot.id}" class="glass-card flex flex-col relative h-auto min-h-min rounded-2xl">
+                        <div class="absolute inset-0 bg-white/5 animate-pulse z-0 rounded-2xl" id="skeleton-${spot.id}"></div>
                         
-                        <div class="p-5 flex-grow relative z-10 flex flex-col justify-between hidden opacity-0 transition-opacity duration-500" id="content-${spot.id}">
+                        <div class="p-5 flex-grow relative z-10 flex flex-col gap-4 hidden opacity-0 transition-opacity duration-500" id="content-${spot.id}">
                             
                             <!-- Header: Name -->
-                            <div class="mb-4">
-                                <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white mb-1 line-clamp-1" title="${spot.name}">${spot.name}</h2>
+                            <div>
+                                <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white mb-1 break-words" title="${spot.name}">${spot.name}</h2>
                                 <span class="text-xs font-semibold px-2 py-1 bg-blue-500/30 rounded-md text-blue-100 uppercase tracking-wider inline-block">
                                     ${getSpotTypeBadge(spot.type)}
                                 </span>
                             </div>
                             
                             <!-- Weather Info (Main) -->
-                            <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-3">
                                     <div class="text-5xl" id="emoji-${spot.id}">☀️</div>
                                     <div>
@@ -415,7 +438,7 @@
                             </div>
 
                             <!-- 4 Metrics Grid -->
-                            <div class="grid grid-cols-2 gap-2 text-sm mb-3">
+                            <div class="grid grid-cols-2 gap-2 text-sm">
                                 <div class="flex items-center gap-2 bg-black/20 p-2 rounded-lg" title="Nhiệt độ hiện tại">
                                     <span class="text-lg">🌡️</span> <span id="metric-temp-${spot.id}" class="font-medium">--°C</span>
                                 </div>
@@ -430,10 +453,10 @@
                                 </div>
                             </div>
                             
-                            <hr class="border-white/10 my-3">
+                            <hr class="border-white/10 my-1">
                             
                             <!-- Tour Guide Tip Box -->
-                            <div class="tip-box p-3 rounded-r-lg mt-auto text-sm shadow-inner">
+                            <div class="tip-box p-3 rounded-lg mt-auto text-sm shadow-inner">
                                 <div class="font-bold text-yellow-400 mb-1 flex items-center gap-1">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                                     Tour Guide Tips:
@@ -453,18 +476,18 @@
         // Fetch API for one spot
         async function fetchSpotWeather(spot) {
             try {
-                // Fetch Detailed Weather (Temp, Humidity, Rain, PoP)
-                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,relative_humidity_2m,precipitation,weather_code&hourly=precipitation_probability&timezone=Asia%2FBangkok&forecast_days=1`;
+                // Fetch Detailed Weather (Temp, Humidity, Rain, PoP, Is Day)
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${spot.lat}&longitude=${spot.lon}&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,is_day&hourly=precipitation_probability&timezone=Asia%2FBangkok&forecast_days=1`;
                 // Fetch Air Quality Index (AQI)
                 const aqiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${spot.lat}&longitude=${spot.lon}&current=us_aqi`;
-                
+
                 const [weatherRes, aqiRes] = await Promise.all([
                     fetch(weatherUrl),
                     fetch(aqiUrl)
                 ]);
 
                 if (!weatherRes.ok || !aqiRes.ok) throw new Error('API Error');
-                
+
                 const weatherData = await weatherRes.json();
                 const aqiData = await aqiRes.json();
 
@@ -479,7 +502,7 @@
         async function fetchDataForCurrentRegion() {
             const spinner = document.getElementById('loading-spinner');
             const statusText = document.getElementById('last-updated-text');
-            
+
             spinner.style.display = 'inline-block';
             statusText.textContent = 'Đang đồng bộ dữ liệu...';
 
@@ -488,7 +511,7 @@
 
             // Only fetch for spots currently filtered/visible
             const filteredSpots = region.spots.filter(spot => spot.name.toLowerCase().includes(searchTerm));
-            
+
             // Re-show skeletons for visible spots during refresh
             filteredSpots.forEach(spot => {
                 const skeleton = document.getElementById(`skeleton-${spot.id}`);
@@ -506,39 +529,39 @@
 
             results.forEach(result => {
                 const { spot, weather, aqi, error } = result;
-                
+
                 const skeleton = document.getElementById(`skeleton-${spot.id}`);
                 const contentBox = document.getElementById(`content-${spot.id}`);
-                
+
                 if (skeleton) skeleton.classList.add('hidden');
-                
+
                 if (contentBox) {
                     contentBox.classList.remove('hidden');
                     setTimeout(() => contentBox.classList.remove('opacity-0'), 50);
                 }
 
                 if (error) {
-                    if(document.getElementById(`desc-${spot.id}`)) document.getElementById(`desc-${spot.id}`).textContent = 'Lỗi kết nối API';
-                    if(document.getElementById(`main-temp-${spot.id}`)) document.getElementById(`main-temp-${spot.id}`).textContent = 'N/A';
-                    if(document.getElementById(`tip-${spot.id}`)) document.getElementById(`tip-${spot.id}`).textContent = 'Không thể tải gợi ý do lỗi dữ liệu.';
+                    if (document.getElementById(`desc-${spot.id}`)) document.getElementById(`desc-${spot.id}`).textContent = 'Lỗi kết nối API';
+                    if (document.getElementById(`main-temp-${spot.id}`)) document.getElementById(`main-temp-${spot.id}`).textContent = 'N/A';
+                    if (document.getElementById(`tip-${spot.id}`)) document.getElementById(`tip-${spot.id}`).textContent = 'Không thể tải gợi ý do lỗi dữ liệu.';
                 } else if (weather && aqi) {
                     const currentData = weather.current;
-                    const details = getWeatherDetails(currentData.weather_code);
-                    
-                    if(document.getElementById(`emoji-${spot.id}`)) document.getElementById(`emoji-${spot.id}`).textContent = details.emoji;
-                    if(document.getElementById(`main-temp-${spot.id}`)) document.getElementById(`main-temp-${spot.id}`).textContent = `${currentData.temperature_2m.toFixed(1)}°C`;
-                    if(document.getElementById(`desc-${spot.id}`)) document.getElementById(`desc-${spot.id}`).textContent = details.desc;
-                    
+                    const details = getWeatherDetails(currentData.weather_code, currentData.is_day);
+
+                    if (document.getElementById(`emoji-${spot.id}`)) document.getElementById(`emoji-${spot.id}`).textContent = details.emoji;
+                    if (document.getElementById(`main-temp-${spot.id}`)) document.getElementById(`main-temp-${spot.id}`).textContent = `${currentData.temperature_2m.toFixed(1)}°C`;
+                    if (document.getElementById(`desc-${spot.id}`)) document.getElementById(`desc-${spot.id}`).textContent = details.desc;
+
                     // Update 4 Metrics Grid
-                    if(document.getElementById(`metric-temp-${spot.id}`)) document.getElementById(`metric-temp-${spot.id}`).textContent = `${currentData.temperature_2m.toFixed(1)}°C`;
-                    if(document.getElementById(`metric-hum-${spot.id}`)) document.getElementById(`metric-hum-${spot.id}`).textContent = `${currentData.relative_humidity_2m}%`;
-                    
+                    if (document.getElementById(`metric-temp-${spot.id}`)) document.getElementById(`metric-temp-${spot.id}`).textContent = `${currentData.temperature_2m.toFixed(1)}°C`;
+                    if (document.getElementById(`metric-hum-${spot.id}`)) document.getElementById(`metric-hum-${spot.id}`).textContent = `${currentData.relative_humidity_2m}%`;
+
                     const pop = weather.hourly && weather.hourly.precipitation_probability ? weather.hourly.precipitation_probability[currentHour] : 0;
-                    if(document.getElementById(`metric-rain-${spot.id}`)) document.getElementById(`metric-rain-${spot.id}`).textContent = `${currentData.precipitation}mm (${pop}%)`;
-                    
+                    if (document.getElementById(`metric-rain-${spot.id}`)) document.getElementById(`metric-rain-${spot.id}`).textContent = `${currentData.precipitation}mm (${pop}%)`;
+
                     const aqiValue = aqi.current.us_aqi;
                     const aqiElement = document.getElementById(`metric-aqi-${spot.id}`);
-                    if(aqiElement) {
+                    if (aqiElement) {
                         aqiElement.textContent = aqiValue;
                         // Color coding based on AQI levels (US standard)
                         if (aqiValue <= 50) aqiElement.className = 'font-medium text-green-400';
@@ -546,17 +569,17 @@
                         else if (aqiValue <= 150) aqiElement.className = 'font-medium text-orange-400';
                         else aqiElement.className = 'font-medium text-red-500';
                     }
-                    
+
                     // Generate Tip
                     const tipText = getTourGuideTip(details.group, currentData.temperature_2m, spot.type, aqiValue);
-                    if(document.getElementById(`tip-${spot.id}`)) document.getElementById(`tip-${spot.id}`).textContent = tipText;
+                    if (document.getElementById(`tip-${spot.id}`)) document.getElementById(`tip-${spot.id}`).textContent = tipText;
                 }
             });
 
             // Update timestamp
             const now = new Date();
             const timeString = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            
+
             spinner.style.display = 'none';
             statusText.textContent = `Cập nhật lần cuối: ${timeString}`;
         }
@@ -568,7 +591,7 @@
             fetchDataForCurrentRegion();
 
             // Set interval to update every 30 minutes (30 * 60 * 1000 = 1,800,000 ms)
-            if(updateInterval) clearInterval(updateInterval);
+            if (updateInterval) clearInterval(updateInterval);
             updateInterval = setInterval(fetchDataForCurrentRegion, 1800000);
         }
 
@@ -576,4 +599,5 @@
         window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
+
 </html>
